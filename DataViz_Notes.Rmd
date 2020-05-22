@@ -26,7 +26,6 @@ devtools::install_github("kjhealy/socviz")
 
 # Chapter 1: Look At Data
 
-<<<<<<< HEAD
 **Why look at data?**
 
 * Because numbers can be misleading & describe a variety of patterns that will only come to light when we can see all of the data at once
@@ -66,4 +65,9 @@ devtools::install_github("kjhealy/socviz")
 =======
 **Why look at data?** 
 * Because numbers can be misleading & describe a variety of patterns that will only come to light when we can see all of the data at once
->>>>>>> 9db1508960ac724da3f238139a4e3697dccfa9fa
+
+# Chapter 2
+
+
+
+
