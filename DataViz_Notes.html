@@ -377,8 +377,8 @@ myPackages &lt;- c(&quot;tidyverse&quot;, &quot;broom&quot;, &quot;coefplot&quot
                  &quot;survey&quot;, &quot;srvyr&quot;, &quot;viridis&quot;, &quot;viridisLite&quot;, &quot;devtools&quot;)
 install.packages(myPackages)
 devtools::install_github(&quot;kjhealy/socviz&quot;)</code></pre>
-<div id="chapter-1-look-at-data" class="section level1">
-<h1>Chapter 1: Look At Data</h1>
+<div id="chapter-1-look-at-data" class="section level2">
+<h2>Chapter 1: Look At Data</h2>
 <p><strong>Why look at data?</strong></p>
 <ul>
 <li>Because numbers can be misleading &amp; describe a variety of patterns that will only come to light when we can see all of the data at once</li>
@@ -424,6 +424,47 @@ devtools::install_github(&quot;kjhealy/socviz&quot;)</code></pre>
 <li>Not always good rules of thumb for what is an honest representation
 <ul>
 <li>Sometimes it makes sense not to start your Y-axis at 0, and if your axes are labeled, not necessarily misleading</li>
+</ul></li>
+</ul>
+</div>
+<div id="chapter-2" class="section level2">
+<h2>Chapter 2</h2>
+<pre class="r"><code># Load in libraries
+library(tidyverse)</code></pre>
+<pre><code>## ── Attaching packages ────────────────────────────────────────────────────────────────────────────────────── tidyverse 1.3.0 ──</code></pre>
+<pre><code>## ✓ ggplot2 3.3.0     ✓ purrr   0.3.4
+## ✓ tibble  3.0.1     ✓ dplyr   0.8.5
+## ✓ tidyr   1.1.0     ✓ stringr 1.4.0
+## ✓ readr   1.3.1     ✓ forcats 0.5.0</code></pre>
+<pre><code>## ── Conflicts ───────────────────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
+## x dplyr::filter() masks stats::filter()
+## x dplyr::lag()    masks stats::lag()</code></pre>
+<pre class="r"><code>library(socviz)</code></pre>
+</div>
+<div id="getting-started" class="section level2">
+<h2>Getting Started</h2>
+<ul>
+<li>Mostly an overview of R &amp; RStudio</li>
+<li>A <code>tibble</code> is a tidyverse data.frame</li>
+</ul>
+<pre class="r"><code># Tiny data set from socviz package
+class(titanic)</code></pre>
+<pre><code>## [1] &quot;data.frame&quot;</code></pre>
+<pre class="r"><code># Turn titanic into a tidyverse tibble
+titanic_tb &lt;- as_tibble(titanic)
+titanic_tb</code></pre>
+<pre><code>## # A tibble: 4 x 4
+##   fate     sex        n percent
+##   &lt;fct&gt;    &lt;fct&gt;  &lt;dbl&gt;   &lt;dbl&gt;
+## 1 perished male    1364    62  
+## 2 perished female   126     5.7
+## 3 survived male     367    16.7
+## 4 survived female   344    15.6</code></pre>
+<ul>
+<li>The package <code>haven</code> is also good for reading in data of various formats</li>
+<li>Apparently “tidy” data is long format rather than wide format
+<ul>
+<li><strong>Note</strong>: I am intrigued</li>
 </ul></li>
 </ul>
 </div>
