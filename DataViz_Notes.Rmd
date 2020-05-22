@@ -55,16 +55,15 @@ devtools::install_github("kjhealy/socviz")
 
 * Not always good rules of thumb for what is an honest representation
   + Sometimes it makes sense not to start your Y-axis at 0, and if your axes are labeled, not necessarily misleading
+<<<<<<< HEAD
   
-## Chapter 2
+## Chapter 2: Getting Started
 
 ```{r, results=FALSE}
 # Load in libraries
 library(tidyverse)
 library(socviz)
 ```
-
-## Getting Started
 
 * Mostly an overview of R & RStudio
 * A `tibble` is a tidyverse data.frame
@@ -82,4 +81,14 @@ titanic_tb
 * Apparently "tidy" data is long format rather than wide format
   + **Note**: I am intrigued
 
+### Making my first figure
+
+```{r}
+library(gapminder)
+gapminder
+
+p <- ggplot(data = gapminder,
+            mapping = aes(x = gdpPercap, y = lifeExp))
+p + geom_point()
+```
 
