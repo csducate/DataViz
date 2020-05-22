@@ -1,0 +1,23 @@
+---
+title: "DataViz for SocScientists Notes"
+author: "Caitlin S. Ducate"
+date: "5/21/2020"
+output: pdf_document
+---
+
+```{r}
+# Setup
+myPackages <- c("tidyverse", "broom", "coefplot", "cowplot",
+                 "gapminder", "GGally", "ggrepel", "ggridges", "gridExtra",
+                 "here", "interplot", "margins", "maps", "mapproj",
+                 "mapdata", "MASS", "quantreg", "rlang", "scales",
+                 "survey", "srvyr", "viridis", "viridisLite", "devtools")
+install.packages(myPackages)
+devtools::install_github("kjhealy/socviz")
+
+```
+
+# Chapter 1: Look At Data
+
+**Why look at data?** 
+* Because numbers can be misleading & describe a variety of patterns that will only come to light when we can see all of the data at once
