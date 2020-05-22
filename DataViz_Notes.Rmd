@@ -2,7 +2,7 @@
 title: "DataViz for SocScientists Notes"
 author: "Caitlin S. Ducate"
 date: "5/21/2020"
-output: pdf_document
+output: html_document
 ---
 
 ```{r, eval = FALSE}
