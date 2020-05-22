@@ -55,6 +55,7 @@ devtools::install_github("kjhealy/socviz")
 
 * Not always good rules of thumb for what is an honest representation
   + Sometimes it makes sense not to start your Y-axis at 0, and if your axes are labeled, not necessarily misleading
+<<<<<<< HEAD
   
 ## Chapter 2
 
@@ -81,5 +82,14 @@ titanic_tb
 * The package `haven` is also good for reading in data of various formats
 * Apparently "tidy" data is long format rather than wide format
   + **Note**: I am intrigued
+=======
+=======
+**Why look at data?** 
+* Because numbers can be misleading & describe a variety of patterns that will only come to light when we can see all of the data at once
+
+# Chapter 2
+
+
+>>>>>>> 1184a61d56f03277c448b1fc489f5d64fd7fa276
 
 
