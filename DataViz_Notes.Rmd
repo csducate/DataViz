@@ -91,3 +91,6 @@ p <- ggplot(data = gapminder,
 p + geom_point()
 ```
 
+# Chapter 3: Make a Plot
+
+## How `ggplot` works
