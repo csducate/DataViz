@@ -293,6 +293,14 @@ p + geom_point()
 
 ![](DataViz_Notes_files/figure-html/unnamed-chunk-7-1.png)<!-- -->
 
+## Steps to Making a Plot
+
+1. Tell `ggplot()` what our data is: `data = ... ` 
+2. Tell `ggplot()` what relationships we want to see: `mapping = aes(...)` 
+3. Tell `ggplot` how we want to see the relationships: `p + geom_<type>`
+4. Layer on geoms as needed by added them to the `p` object one at a time
+5. Use additional features to adjust scales, labels, tick marks, & titles
+
 
 
 

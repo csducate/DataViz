@@ -133,9 +133,70 @@ str(p)
 p + geom_point()
 ```
 
+## Steps to Making a Plot
 
+1. Tell `ggplot()` what our data is: `data = ... ` 
+2. Tell `ggplot()` what relationships we want to see: `mapping = aes(...)` 
+3. Tell `ggplot` how we want to see the relationships: `p + geom_<type>`
+4. Layer on geoms as needed by added them to the `p` object one at a time
+5. Use additional features to adjust scales, labels, tick marks, & titles
 
+```{r}
+# Add a smooth function over the data points
+## By default, geom_smooth() includes the standard error!! That is cool
+p + geom_point() + geom_smooth()
+```
 
+```{r}
+# Because the output says geom_smooth() is using method = 'gam', suggests we can tell it to use other methods
+p + geom_point() + geom_smooth(method = "lm")
+```
 
+Hmm....The data is all bunched up. Let's log it!
+
+```{r}
+p <- ggplot(data = gapminder, 
+            mapping = aes(x = gdpPercap,
+                          y = lifeExp))
+
+p + geom_point() +
+    geom_smooth(method = "lm") + # Note: there is a typo in the book that sets `method = "gam"`
+    scale_x_log10()
+```
+
+Good news! There are a bunch of scale transformations you can do. They all take the form of scale_<axis>_<transformation>
+
+Now to clean up the scale labels:
+
+```{r}
+p + geom_point(color = "purple") + 
+    geom_smooth(method = "loess") + 
+    scale_x_log10(labels = scales::dollar)
+```
+
+Playing with the color and transparency (`alpha`) of the points. Modifying the transparency is good for when you have a lot of overlapping data points
+
+```{r}
+p + geom_point(color = "purple", alpha = 0.3) + 
+    geom_smooth(method = "lm") + 
+    scale_x_log10(labels = scales::dollar)
+```
+
+Polishing up the labels
+
+```{r}
+p <- ggplot(data = gapminder, 
+            mapping = aes(x = gdpPercap,
+                          y = lifeExp))
+p + geom_point(alpha = 0.3) + 
+    geom_smooth(method = "lm") + 
+    scale_x_log10(labels = scales::dollar) + 
+    labs(x = "GDP Per Capita",
+         y = "Life Expectancy in Years",
+         title = "Economic Growth and Life Expectancy",
+         subtitle = "Data points are country-years",
+         caption = "Source: Gapminder")
+
+```
 
 
