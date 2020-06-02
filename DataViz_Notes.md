@@ -302,8 +302,102 @@ p + geom_point()
 5. Use additional features to adjust scales, labels, tick marks, & titles
 
 
+```r
+# Add a smooth function over the data points
+## By default, geom_smooth() includes the standard error!! That is cool
+p + geom_point() + geom_smooth()
+```
+
+```
+## `geom_smooth()` using method = 'gam' and formula 'y ~ s(x, bs = "cs")'
+```
+
+![](DataViz_Notes_files/figure-html/unnamed-chunk-8-1.png)<!-- -->
 
 
+```r
+# Because the output says geom_smooth() is using method = 'gam', suggests we can tell it to use other methods
+p + geom_point() + geom_smooth(method = "lm")
+```
 
+```
+## `geom_smooth()` using formula 'y ~ x'
+```
+
+![](DataViz_Notes_files/figure-html/unnamed-chunk-9-1.png)<!-- -->
+
+Hmm....The data is all bunched up. Let's log it!
+
+
+```r
+p <- ggplot(data = gapminder, 
+            mapping = aes(x = gdpPercap,
+                          y = lifeExp))
+
+p + geom_point() +
+    geom_smooth(method = "lm") + # Note: there is a typo in the book that sets `method = "gam"`
+    scale_x_log10()
+```
+
+```
+## `geom_smooth()` using formula 'y ~ x'
+```
+
+![](DataViz_Notes_files/figure-html/unnamed-chunk-10-1.png)<!-- -->
+
+Good news! There are a bunch of scale transformations you can do. They all take the form of scale_<axis>_<transformation>
+
+Now to clean up the scale labels:
+
+
+```r
+p + geom_point(color = "purple") + 
+    geom_smooth(method = "loess") + 
+    scale_x_log10(labels = scales::dollar)
+```
+
+```
+## `geom_smooth()` using formula 'y ~ x'
+```
+
+![](DataViz_Notes_files/figure-html/unnamed-chunk-11-1.png)<!-- -->
+
+Playing with the color and transparency (`alpha`) of the points. Modifying the transparency is good for when you have a lot of overlapping data points
+
+
+```r
+p + geom_point(color = "purple", alpha = 0.3) + 
+    geom_smooth(method = "lm") + 
+    scale_x_log10(labels = scales::dollar)
+```
+
+```
+## `geom_smooth()` using formula 'y ~ x'
+```
+
+![](DataViz_Notes_files/figure-html/unnamed-chunk-12-1.png)<!-- -->
+
+Polishing up the labels
+
+
+```r
+p <- ggplot(data = gapminder, 
+            mapping = aes(x = gdpPercap,
+                          y = lifeExp))
+p + geom_point(alpha = 0.3) + 
+    geom_smooth(method = "lm") + 
+    scale_x_log10(labels = scales::dollar) + 
+    labs(x = "GDP Per Capita",
+         y = "Life Expectancy in Years",
+         title = "Economic Growth and Life Expectancy",
+         subtitle = "Data points are country-years",
+         caption = "Source: Gapminder")
+```
+
+```
+## `geom_smooth()` using formula 'y ~ x'
+```
+
+![](DataViz_Notes_files/figure-html/unnamed-chunk-13-1.png)<!-- -->
 
 
