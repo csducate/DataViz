@@ -2,7 +2,9 @@
 title: "DataViz for SocScientists Notes"
 author: "Caitlin S. Ducate"
 date: "5/21/2020"
-output: html_document
+output: 
+  html_document: 
+    keep_md: yes
 ---
 
 ```{r, eval = FALSE}
@@ -94,3 +96,46 @@ p + geom_point()
 # Chapter 3: Make a Plot
 
 ## How `ggplot` works
+
+* plot elements called *aesthetic mappings*
+* Type of plot is called a *geom*
+* `ggplot` is part of the *tidyverse*, so it expects data in long format (where every observation is a row)
+* Basic template for a plot:
+
+```{r, eval = FALSE}
+p <- ggplot(data = <data>,
+            mapping = aes(<aesthetic1> = <variable1>,
+                          <aesthetic2> = <variable2>))
+p <- geom_<type>(<...>) +
+     scale_<mapping>_<type>()
+```
+
+## Trying out a plot
+
+```{r}
+library(gapminder)
+gapminder
+
+# First tell ggplot() what data we are using
+p <- ggplot(data = gapminder)
+p <- ggplot(data = gapminder, 
+            mapping = aes(x = gdpPercap,
+                          y = lifeExp))
+
+# How much info does ggplot() have right now?
+str(p)
+```
+
+* The asethetic mappings indicate with variables in the data will be represented by visual elements 
+* However, to draw the plot, you need to add a layer to the plot
+
+```{r}
+p + geom_point()
+```
+
+
+
+
+
+
+
