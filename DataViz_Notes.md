@@ -17,6 +17,7 @@ myPackages <- c("tidyverse", "broom", "coefplot", "cowplot",
                  "survey", "srvyr", "viridis", "viridisLite", "devtools")
 install.packages(myPackages)
 devtools::install_github("kjhealy/socviz")
+library(here)
 ```
 
 ## Chapter 1: Look At Data
@@ -400,4 +401,68 @@ p + geom_point(alpha = 0.3) +
 
 ![](DataViz_Notes_files/figure-html/unnamed-chunk-13-1.png)<!-- -->
 
+Other fun graph stuff
 
+
+```r
+p <- ggplot(data = gapminder, mapping = aes(x = gdpPercap, y = lifeExp))
+p + geom_point(mapping = aes(color = continent)) + 
+    geom_smooth(method = "loess") + 
+    scale_x_log10()
+```
+
+```
+## `geom_smooth()` using formula 'y ~ x'
+```
+
+![](DataViz_Notes_files/figure-html/unnamed-chunk-14-1.png)<!-- -->
+
+
+```r
+p <- ggplot(data = gapminder,
+            mapping = aes(x = gdpPercap,
+                          y = lifeExp))
+p + geom_point(mapping = aes(color = log(pop))) + 
+    scale_x_log10()
+```
+
+![](DataViz_Notes_files/figure-html/unnamed-chunk-15-1.png)<!-- -->
+
+### Saving plots
+
+General saving method. Works to save the most recently made figure.
+
+
+```r
+ggsave(filename = "my_figure.png")
+```
+
+```
+## Saving 7 x 5 in image
+```
+
+To save a specific figure, using the `here()` package to handle files in folders 
+
+
+```r
+p <- ggplot(data = gapminder,
+            mapping = aes(x = gdpPercap,
+                          y = lifeExp))
+p_out <- p + geom_point(mapping = aes(color = log(pop)), alpha = 0.7) + 
+              scale_x_log10(labels = scales::dollar) +
+              labs(x = "GDP Per Capita",
+                   y = "Life expectancy in years",
+                   title = "Economic Growth and Life Expectancy",
+                   subtitle = "Data points are country-years",
+                   caption = "Source: Gapminder")
+
+# First argument in here() is the name of the subfolder
+ggsave(here("Figures", "lifeexp_vs_gdp_gradient.pdf"), plot = p_out)
+```
+
+**Note about saving figure file formats**
+
+* PDF is the best option for publication because PDF is acceptable for most journals *and* is a vector-formatted file type
+  - This makes resizing easy without ruining the resolution
+* Additionally, it's underlying langauge is Postscript, which is the language of a lot of moder typesetting and printing
+* PNG & JPG are *raster* based formats that are not easily resized
